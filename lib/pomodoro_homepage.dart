@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'timer.dart';
+import 'package:flutter_popup_card/flutter_popup_card.dart';
 
 class PomoHomePage extends StatefulWidget {
   const PomoHomePage({super.key});
@@ -12,14 +13,31 @@ class _PomoHomePageState extends State<PomoHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black45,
+        backgroundColor: Colors.black45,
         appBar: AppBar(
           title: const Text("PomoBoost"),
           leading: const Icon(Icons.check_circle_outline_outlined),
           actions: [
             IconButton(
               onPressed: () {
-                print("id");
+                showPopupCard(
+                    context: context,
+                    builder: (context) {
+                      return PopupCard(
+                        elevation: 10,
+                        color: Colors.grey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsetsDirectional.all(20),
+                          child: Text(
+                            "Your mom here",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      );
+                    });
               },
               icon: const Icon(Icons.person),
               tooltip: "User Info",
@@ -66,11 +84,11 @@ class _TabState extends State<Tab> {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-         SizedBox(
+        SizedBox(
           height: 25,
         ),
         Padding(
-          padding:  EdgeInsets.only(left: 60, right: 60),
+          padding: EdgeInsets.only(left: 60, right: 60),
           child: SizedBox(
               height: 300, width: double.infinity, child: TabContent()),
         )
@@ -88,29 +106,36 @@ class TabContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DefaultTabController
-      (
+      home: DefaultTabController(
         length: 3,
         child: Scaffold(
           backgroundColor: Colors.black38,
           appBar: AppBar(
+            backgroundColor: Colors.grey.shade400,
             bottom: const TabBar(tabs: [
               Text("Pomodoro", style: TextStyle(fontWeight: FontWeight.bold)),
               Text("Short Break",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              Text("Long Break",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("Long Break", style: TextStyle(fontWeight: FontWeight.bold)),
             ]),
           ),
           body: TabBarView(children: [
             Container(
-              color: Colors.blue.shade300,
-              padding: const EdgeInsets.only(left: 100,top: 30),
-              
-              child: const Text("Clock",style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),),
+              color: Colors.blueGrey.shade100,
+              alignment: Alignment.center,
+              child: const Text(
+                "Clock",
+                style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+              ),
             ),
-           const Icon(Icons.free_breakfast_rounded,size: 100,),
-           const Icon(Icons.food_bank,size: 100,),
+            const Icon(
+              Icons.free_breakfast_rounded,
+              size: 100,
+            ),
+            const Icon(
+              Icons.food_bank,
+              size: 100,
+            ),
           ]),
         ),
       ),
