@@ -12,6 +12,7 @@ class _PomoHomePageState extends State<PomoHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black45,
         appBar: AppBar(
           title: const Text("PomoBoost"),
           leading: const Icon(Icons.check_circle_outline_outlined),
@@ -20,7 +21,7 @@ class _PomoHomePageState extends State<PomoHomePage> {
               onPressed: () {
                 print("id");
               },
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person),
               tooltip: "User Info",
             ),
             const SizedBox(
@@ -49,13 +50,12 @@ class _PomoHomePageState extends State<PomoHomePage> {
           bottomOpacity: 3,
           shadowColor: Colors.black,
         ),
-        body: Tab());
+        body: const Tab());
   }
 }
 
 class Tab extends StatefulWidget {
-
- const Tab({super.key});
+  const Tab({super.key});
 
   @override
   State<Tab> createState() => _TabState();
@@ -64,25 +64,17 @@ class Tab extends StatefulWidget {
 class _TabState extends State<Tab> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 60, right: 60),
-            child: Container(
-                decoration:const BoxDecoration(
-                  color: Colors.lightBlue,
-                  shape: BoxShape.circle,
-                ),
-                height: 300,
-                width: double.infinity,
-                child: const TabContent()),
-          )
-        ],
-      ),
+    return const Column(
+      children: [
+         SizedBox(
+          height: 25,
+        ),
+        Padding(
+          padding:  EdgeInsets.only(left: 60, right: 60),
+          child: SizedBox(
+              height: 300, width: double.infinity, child: TabContent()),
+        )
+      ],
     );
   }
 }
@@ -96,21 +88,29 @@ class TabContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
+      home: DefaultTabController
+      (
         length: 3,
         child: Scaffold(
+          backgroundColor: Colors.black38,
           appBar: AppBar(
             bottom: const TabBar(tabs: [
               Text("Pomodoro", style: TextStyle(fontWeight: FontWeight.bold)),
               Text("Short Break",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              Text("Long Break", style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("Long Break",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
             ]),
           ),
-          body: const TabBarView(children: [
-            PomoTimer(),
-            Text("It will contain break timer"),
-            Text("It will contain long break timer"),
+          body: TabBarView(children: [
+            Container(
+              color: Colors.blue.shade300,
+              padding: const EdgeInsets.only(left: 100,top: 30),
+              
+              child: const Text("Clock",style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),),
+            ),
+           const Icon(Icons.free_breakfast_rounded,size: 100,),
+           const Icon(Icons.food_bank,size: 100,),
           ]),
         ),
       ),

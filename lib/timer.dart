@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html';
 
 import 'package:flutter/material.dart';
 
@@ -11,21 +12,28 @@ class PomoTimer extends StatefulWidget {
 
 class _PomoTimer extends State {
   int? _remainingtime;
-  Timer? _Pomotimer;
-  
-   _PomoTimer({int time = 25}) : _remainingtime = time;
+  int sec = 0;
+  Timer? _pomoTimer;
+
+  _PomoTimer({int time = 25}) : _remainingtime = time;
 
   void _startTimer() {
-    
-    Duration oneSec = Duration(seconds: 1);
-    _Pomotimer = Timer.periodic(oneSec, (timer) {
-      if (_remainingtime! <= 0) {
+    Duration oneSec = const Duration(seconds: 1);
+    _pomoTimer = Timer.periodic(oneSec, (timer) {
+      
+      if (sec == 0 && _remainingtime! >= 0) {
         setState(() {
-          _Pomotimer!.cancel();
+          _remainingtime = _remainingtime! - 1;
+          sec = 60;
+        });
+      } else if (sec == 0 && _remainingtime! < 0) {
+        setState(() {
+          _pomoTimer?.cancel();
         });
       } else {
         setState(() {
-          _remainingtime = _remainingtime! - 1;
+          sec -=1;
+          _remainingtime;
         });
       }
     });
@@ -33,7 +41,7 @@ class _PomoTimer extends State {
 
   @override
   void dispose() {
-    _Pomotimer!.cancel();
+    _pomoTimer!.cancel();
     super.dispose();
   }
 
@@ -42,8 +50,8 @@ class _PomoTimer extends State {
     return Scaffold(
         body: Column(
       children: [
-        Text("$_remainingtime"),
-        SizedBox(
+        Text("$_remainingtime : $sec"),
+        const SizedBox(
           height: 40,
         ),
         ElevatedButton(onPressed: _startTimer, child: const Text("Start"))

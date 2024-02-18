@@ -115,6 +115,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  pomodoro4d:
+    dependency: "direct main"
+    description:
+      name: pomodoro4d
+      sha256: "2c46449ed683aa0498c60fe2f11f995426b278490c428916239278fe947de301"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -186,3 +194,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.0-194.0.dev <4.0.0"
+  flutter: ">=1.17.0"
