@@ -3,13 +3,20 @@ import 'timer.dart';
 import 'package:flutter_popup_card/flutter_popup_card.dart';
 
 class PomoHomePage extends StatefulWidget {
-  const PomoHomePage({super.key});
+  final color;
+
+  const PomoHomePage({
+    super.key,
+    this.color,
+  });
 
   @override
   State<PomoHomePage> createState() => _PomoHomePageState();
 }
 
 class _PomoHomePageState extends State<PomoHomePage> {
+  final popcardColor = Colors.grey;
+  final double y = 56;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,23 +28,26 @@ class _PomoHomePageState extends State<PomoHomePage> {
             IconButton(
               onPressed: () {
                 showPopupCard(
-                    context: context,
-                    builder: (context) {
-                      return PopupCard(
-                        elevation: 10,
-                        color: Colors.grey,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
+                  context: context,
+                  builder: (context) {
+                    return PopupCard(
+                      elevation: 10,
+                      color: popcardColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsetsDirectional.all(20),
+                        child: Text(
+                          "Your mom here",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsetsDirectional.all(20),
-                          child: Text(
-                            "Your mom here",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      );
-                    });
+                      ),
+                    );
+                  },
+                  alignment: Alignment.topRight,
+                  offset:  Offset(-159, y),
+                );
               },
               icon: const Icon(Icons.person),
               tooltip: "User Info",
@@ -48,7 +58,27 @@ class _PomoHomePageState extends State<PomoHomePage> {
             IconButton(
               tooltip: "Setting",
               onPressed: () {
-                print("Settings");
+                showPopupCard(
+                    context: context,
+                    builder: (context) {
+                      return PopupCard(
+                        elevation: 10,
+                        color: popcardColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsetsDirectional.all(20),
+                          child: Text(
+                            "Setting here plss",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      );
+                    },
+                    alignment: Alignment.topRight,
+                    offset:  Offset(-70, y),
+                    );
               },
               icon: const Icon(Icons.settings),
             ),
@@ -58,7 +88,26 @@ class _PomoHomePageState extends State<PomoHomePage> {
             IconButton(
               tooltip: "Statistics",
               onPressed: () {
-                print("Stats");
+                showPopupCard(
+                    context: context,
+                    builder: (context) {
+                      return PopupCard(
+                        elevation: 10,
+                        color: popcardColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsetsDirectional.all(20),
+                          child: Text(
+                            "Statistics here plss",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      );
+                    },
+                    alignment: Alignment.topRight,
+                    offset:  Offset(-10, y),);
               },
               icon: const Icon(Icons.receipt_rounded),
             ),
@@ -109,7 +158,7 @@ class TabContent extends StatelessWidget {
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
-          backgroundColor: Colors.black38,
+          backgroundColor: const Color.fromARGB(96, 0, 0, 0),
           appBar: AppBar(
             backgroundColor: Colors.grey.shade400,
             bottom: const TabBar(tabs: [
@@ -121,7 +170,6 @@ class TabContent extends StatelessWidget {
           ),
           body: TabBarView(children: [
             Container(
-              color: Colors.blueGrey.shade100,
               alignment: Alignment.center,
               child: const Text(
                 "Clock",
