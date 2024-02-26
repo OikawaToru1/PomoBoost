@@ -171,10 +171,7 @@ class TabContent extends StatelessWidget {
           body: TabBarView(children: [
             Container(
               alignment: Alignment.center,
-              child: const Text(
-                "Clock",
-                style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
-              ),
+              child:const PomoTimer()
             ),
             const Icon(
               Icons.free_breakfast_rounded,
