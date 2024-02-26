@@ -33,7 +33,7 @@ class _PomoTimer extends State {
         if (sec == 0 && _remainingMinute! >= 0) {
           setState(() {
             _remainingMinute = _remainingMinute! - 1;
-            sec = 60;
+            sec = 59;
             btnStatus = "Pause";
           });
         } else {
@@ -62,15 +62,26 @@ class _PomoTimer extends State {
 
   @override
   Widget build(BuildContext) {
-    return Scaffold(
-        body: Column(
-      children: [
-        Text("$_remainingMinute : $sec"),
-        const SizedBox(
-          height: 40,
+    return Container(
+      color: const Color.fromARGB(96, 0, 0, 0),
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Text("$_remainingMinute : $sec",
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                )),
+            const SizedBox(
+              height: 40,
+            ),
+            ElevatedButton(onPressed: _startTimer, child: Text(btnStatus)),
+          ],
         ),
-        ElevatedButton(onPressed: _startTimer, child: Text(btnStatus)),
-      ],
-    ));
+      ),
+    );
   }
 }

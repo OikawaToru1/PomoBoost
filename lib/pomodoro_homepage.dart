@@ -46,7 +46,7 @@ class _PomoHomePageState extends State<PomoHomePage> {
                     );
                   },
                   alignment: Alignment.topRight,
-                  offset:  Offset(-159, y),
+                  offset: Offset(-159, y),
                 );
               },
               icon: const Icon(Icons.person),
@@ -59,26 +59,26 @@ class _PomoHomePageState extends State<PomoHomePage> {
               tooltip: "Setting",
               onPressed: () {
                 showPopupCard(
-                    context: context,
-                    builder: (context) {
-                      return PopupCard(
-                        elevation: 10,
-                        color: popcardColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                  context: context,
+                  builder: (context) {
+                    return PopupCard(
+                      elevation: 10,
+                      color: popcardColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsetsDirectional.all(20),
+                        child: Text(
+                          "Setting here plss",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsetsDirectional.all(20),
-                          child: Text(
-                            "Setting here plss",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      );
-                    },
-                    alignment: Alignment.topRight,
-                    offset:  Offset(-70, y),
+                      ),
                     );
+                  },
+                  alignment: Alignment.topRight,
+                  offset: Offset(-70, y),
+                );
               },
               icon: const Icon(Icons.settings),
             ),
@@ -89,25 +89,26 @@ class _PomoHomePageState extends State<PomoHomePage> {
               tooltip: "Statistics",
               onPressed: () {
                 showPopupCard(
-                    context: context,
-                    builder: (context) {
-                      return PopupCard(
-                        elevation: 10,
-                        color: popcardColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                  context: context,
+                  builder: (context) {
+                    return PopupCard(
+                      elevation: 10,
+                      color: popcardColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsetsDirectional.all(20),
+                        child: Text(
+                          "Statistics here plss",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsetsDirectional.all(20),
-                          child: Text(
-                            "Statistics here plss",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      );
-                    },
-                    alignment: Alignment.topRight,
-                    offset:  Offset(-10, y),);
+                      ),
+                    );
+                  },
+                  alignment: Alignment.topRight,
+                  offset: Offset(-10, y),
+                );
               },
               icon: const Icon(Icons.receipt_rounded),
             ),
@@ -134,12 +135,12 @@ class _TabState extends State<Tab> {
     return const Column(
       children: [
         SizedBox(
-          height: 25,
+          height: 30,
         ),
         Padding(
           padding: EdgeInsets.only(left: 60, right: 60),
           child: SizedBox(
-              height: 300, width: double.infinity, child: TabContent()),
+              height: 350, width: double.infinity, child: TabContent()),
         )
       ],
     );
@@ -169,15 +170,20 @@ class TabContent extends StatelessWidget {
             ]),
           ),
           body: TabBarView(children: [
-            Container(
-              alignment: Alignment.center,
-              child:const PomoTimer()
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: const PomoTimer(),
+              ),
             ),
-            const Icon(
+            Icon(
               Icons.free_breakfast_rounded,
               size: 100,
             ),
-            const Icon(
+            Icon(
               Icons.food_bank,
               size: 100,
             ),
