@@ -3,11 +3,8 @@ import 'timer.dart';
 import 'package:flutter_popup_card/flutter_popup_card.dart';
 
 class PomoHomePage extends StatefulWidget {
-  final color;
-
   const PomoHomePage({
     super.key,
-    this.color,
   });
 
   @override
@@ -15,12 +12,12 @@ class PomoHomePage extends StatefulWidget {
 }
 
 class _PomoHomePageState extends State<PomoHomePage> {
-  final popcardColor = Colors.grey;
+  final popcardColor = Colors.pink;
   final double y = 56;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black45,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text("PomoBoost"),
           leading: const Icon(Icons.check_circle_outline_outlined),
@@ -159,9 +156,9 @@ class TabContent extends StatelessWidget {
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(96, 0, 0, 0),
+          backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.grey.shade400,
+            backgroundColor: Colors.lightBlue.shade100,
             bottom: const TabBar(tabs: [
               Text("Pomodoro", style: TextStyle(fontWeight: FontWeight.bold)),
               Text("Short Break",
@@ -173,6 +170,7 @@ class TabContent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(30),
               child: Card(
+                color: Colors.blue.shade50,
                 elevation: 10,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),

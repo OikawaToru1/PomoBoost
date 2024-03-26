@@ -5,7 +5,7 @@ import './pomodoro_homepage.dart';
 void main() {
   runApp(const MaterialApp(
     title: "PomoBoost",
-    home: PomoHomePage(color: Colors.grey,),
+    home: PomoHomePage(),
     debugShowCheckedModeBanner: false,
   ));
 }

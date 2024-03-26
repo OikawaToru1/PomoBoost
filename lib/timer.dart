@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ class PomoTimer extends StatefulWidget {
   State<StatefulWidget> createState() => _PomoTimer();
 }
 
-class _PomoTimer extends State {
+class _PomoTimer extends State<PomoTimer> {
   int? _remainingMinute;
   int sec = 0, count = 0;
   Timer? _pomoTimer;
@@ -61,26 +60,28 @@ class _PomoTimer extends State {
   }
 
   @override
-  Widget build(BuildContext) {
-    return Container(
-      color: const Color.fromARGB(96, 0, 0, 0),
-      child: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Text("$_remainingMinute : $sec",
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          Text("$_remainingMinute : $sec",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              )),
+          const SizedBox(
+            height: 40,
+          ),
+          ElevatedButton(
+            onPressed: _startTimer,
+            child: Text(btnStatus,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                )),
-            const SizedBox(
-              height: 40,
-            ),
-            ElevatedButton(onPressed: _startTimer, child: Text(btnStatus)),
-          ],
-        ),
+                    color: Colors.black, fontWeight: FontWeight.w700)),
+          ),
+        ],
       ),
     );
   }
