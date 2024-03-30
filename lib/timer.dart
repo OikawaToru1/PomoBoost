@@ -3,19 +3,23 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class PomoTimer extends StatefulWidget {
-  const PomoTimer({super.key});
+  final int? clockTime;
+  const PomoTimer({super.key, required this.clockTime});
 
   @override
-  State<StatefulWidget> createState() => _PomoTimer();
+  State<StatefulWidget> createState() {
+    return _PomoTimer(clockTime);
+  }
 }
 
 class _PomoTimer extends State<PomoTimer> {
+  int? time;
   int? _remainingMinute;
   int sec = 0, count = 0;
   Timer? _pomoTimer;
   String btnStatus = "Start";
 
-  _PomoTimer({int time = 25}) : _remainingMinute = time;
+  _PomoTimer(this.time) : _remainingMinute = time;
 
   void _startTimer() {
     count++;

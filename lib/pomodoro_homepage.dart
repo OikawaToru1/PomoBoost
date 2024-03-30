@@ -174,16 +174,28 @@ class TabContent extends StatelessWidget {
                 elevation: 10,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
-                child: const PomoTimer(),
+                child: const PomoTimer(clockTime: 25,),
               ),
             ),
-            Icon(
-              Icons.free_breakfast_rounded,
-              size: 100,
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Card(
+                color: Colors.blue.shade50,
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: const PomoTimer(clockTime: 5,),
+              ),
             ),
-            Icon(
-              Icons.food_bank,
-              size: 100,
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Card(
+                color: Colors.blue.shade50,
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: const PomoTimer(clockTime: 15,),
+              ),
             ),
           ]),
         ),
