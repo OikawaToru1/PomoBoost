@@ -169,36 +169,35 @@ class TabContent extends StatelessWidget {
           body: TabBarView(children: [
             Padding(
               padding: const EdgeInsets.all(30),
-              child: Card(
-                color: Colors.blue.shade50,
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: const PomoTimer(clockTime: 25,),
-              ),
+              child: tabCard(25),
             ),
             Padding(
               padding: const EdgeInsets.all(30),
-              child: Card(
-                color: Colors.blue.shade50,
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: const PomoTimer(clockTime: 5,),
-              ),
+              child: tabCard(5),
             ),
             Padding(
               padding: const EdgeInsets.all(30),
-              child: Card(
-                color: Colors.blue.shade50,
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: const PomoTimer(clockTime: 15,),
-              ),
+              child: tabCard(15),
             ),
           ]),
         ),
+      ),
+    );
+  }
+}
+
+class tabCard extends StatelessWidget {
+  int widgetTime;
+  tabCard(this.widgetTime, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.blue.shade50,
+      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: PomoTimer(
+        clockTime: widgetTime,
       ),
     );
   }
