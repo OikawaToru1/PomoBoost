@@ -169,15 +169,15 @@ class TabContent extends StatelessWidget {
           body: TabBarView(children: [
             Padding(
               padding: const EdgeInsets.all(30),
-              child: tabCard(25),
+              child: TabCard(25),
             ),
             Padding(
               padding: const EdgeInsets.all(30),
-              child: tabCard(5),
+              child: TabCard(5),
             ),
             Padding(
               padding: const EdgeInsets.all(30),
-              child: tabCard(15),
+              child: TabCard(15),
             ),
           ]),
         ),
@@ -186,9 +186,9 @@ class TabContent extends StatelessWidget {
   }
 }
 
-class tabCard extends StatelessWidget {
+class TabCard extends StatelessWidget {
   int widgetTime;
-  tabCard(this.widgetTime, {super.key});
+  TabCard(this.widgetTime, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -199,6 +199,46 @@ class tabCard extends StatelessWidget {
       child: PomoTimer(
         clockTime: widgetTime,
       ),
+    );
+  }
+}
+
+class PopUpCardDetail extends StatelessWidget {
+  final popcardColor = Colors.pink;
+  final double y = 56;
+  final String tip;
+  final IconData;
+
+  const PopUpCardDetail({super.key, required this.tip, required this.IconData});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        showPopupCard(
+          context: context,
+          builder: (context) {
+            return PopupCard(
+              elevation: 10,
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: const Padding(
+                padding: EdgeInsetsDirectional.all(20),
+                child: Text(
+                  "Your mom here",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            );
+          },
+          alignment: Alignment.topRight,
+          offset: Offset(-159, y),
+        );
+      },
+      icon: IconData,
+      tooltip: tip,
     );
   }
 }
