@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'timer.dart';
 import 'package:flutter_popup_card/flutter_popup_card.dart';
+import 'userinfo.dart';
 
 class PomoHomePage extends StatefulWidget {
   const PomoHomePage({
@@ -186,6 +187,7 @@ class TabContent extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class TabCard extends StatelessWidget {
   int widgetTime;
   TabCard(this.widgetTime, {super.key});
@@ -199,46 +201,6 @@ class TabCard extends StatelessWidget {
       child: PomoTimer(
         clockTime: widgetTime,
       ),
-    );
-  }
-}
-
-class PopUpCardDetail extends StatelessWidget {
-  final popcardColor = Colors.pink;
-  final double y = 56;
-  final String tip;
-  final IconData;
-
-  const PopUpCardDetail({super.key, required this.tip, required this.IconData});
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        showPopupCard(
-          context: context,
-          builder: (context) {
-            return PopupCard(
-              elevation: 10,
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: const Padding(
-                padding: EdgeInsetsDirectional.all(20),
-                child: Text(
-                  "Your mom here",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            );
-          },
-          alignment: Alignment.topRight,
-          offset: Offset(-159, y),
-        );
-      },
-      icon: IconData,
-      tooltip: tip,
     );
   }
 }
